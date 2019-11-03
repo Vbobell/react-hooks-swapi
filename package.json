@@ -1,0 +1,18 @@
+{
+  "name": "test-ilegra",
+  "version": "1.0.0",
+  "description": "https://github.com/Vbobell/test-ilegra.git",
+  "main": "index.js",
+  "repository": "https://github.com/Vbobell/test-ilegra.git",
+  "author": "Vbobell <vinicius.bobel41@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
