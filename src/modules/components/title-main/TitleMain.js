@@ -1,8 +1,15 @@
 import React from 'react';
+import TemplateContext from '../../containers/template/TemplateContext';
 
 const TitleMain = () => {
     return (
-        <h1 data-testid="titleMain"></h1>
+        <TemplateContext.Consumer> 
+            {
+                ({title}) => (
+                    <h1 data-testid="titleMain">{ title }</h1>
+                )
+            }
+        </TemplateContext.Consumer>
     );
 };
 
