@@ -1,9 +1,10 @@
 import React from 'react';
+import TitleMain from '../title-main/TitleMain';
 
 const Header = () => {
     return (
         <header data-testid="header">
-            <h1>first component</h1>
+            <TitleMain></TitleMain>
         </header>
     );
 };
