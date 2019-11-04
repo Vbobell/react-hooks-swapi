@@ -1,13 +1,30 @@
 {
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
     "parserOptions": {
-        "parser": "babel-eslint",
-        "ecmaVersion": 6,
+        "ecmaVersion": 2018,
         "sourceType": "module",
+        "parser": "babel-eslint",
         "ecmaFeatures": {
             "jsx": true
         }
     },
     "rules": {
-        "semi": "error"
+        "indent": [
+            "error"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error"
+       ]
     }
 }

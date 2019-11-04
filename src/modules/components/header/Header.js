@@ -1,11 +1,11 @@
 import React from 'react';
 
-const App = () => {
+const Header = () => {
     return (
-        <header>
+        <header data-testid="header">
             <h1>first component</h1>
         </header>
     );
 };
 
-export default App;
+export default Header;

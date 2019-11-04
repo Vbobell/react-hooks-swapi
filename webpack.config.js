@@ -21,13 +21,13 @@ module.exports = {
         rules: [{
             test: /\.(js|jsx)$/,
             exclude: /node_modules/,
-            use: ['babel-loader']
+            use: ['babel-loader', 'eslint-loader']
         }, {
             test: /\.(scss|css)$/,
             use: [
                 MiniCssExtractPlugin.loader,
-                "css-loader",
-                "sass-loader"
+                'css-loader',
+                'sass-loader'
             ]
         }, {
             test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
