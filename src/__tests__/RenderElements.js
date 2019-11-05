@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 import Films from '../modules/containers/films/Films';
 import Header from '../modules/components/header/Header';
 import TitleMain from '../modules/components/title-main/TitleMain';
+import List from '../modules/components/list/List';
 
 describe('<Films /> spec', () => {
     it('Render header', () => {
@@ -11,6 +12,13 @@ describe('<Films /> spec', () => {
         const elem = getByTestId('header');
 
         expect(elem.nodeName == 'HEADER');
+    });
+
+    it('Render list', () => {
+        const { getByTestId } = render(<List/>);
+        const elem = getByTestId('list');
+
+        expect(elem.nodeName == 'UL');
     });
 });
 
