@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import React from 'react';
 import { render } from '@testing-library/react';
 import Films from '../modules/containers/films/Films';
