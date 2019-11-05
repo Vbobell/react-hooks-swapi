@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Films from '../modules/containers/films/Films';
-import Header from '../modules/components/header/Header';
-import TitleMain from '../modules/components/title-main/TitleMain';
-import List from '../modules/components/list/List';
+import Films from '../containers/films/Films';
+import Header from '../components/header/Header';
+import TitleMain from '../components/title-main/TitleMain';
+import List from '../components/list/List';
 
 describe('<Films /> spec', () => {
     it('Render header', () => {
