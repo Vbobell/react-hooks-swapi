@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import TemplateContext from '../../containers/template/TemplateContext';
+import Context from '../../store/config/Context';
 
 const TitleMain = () => {
-    const { title } = useContext(TemplateContext);
+    const { store } = useContext(Context);
 
     return (
         <h1 data-testid="titleMain">
-            { title }
+            { store.title }
         </h1>
     );
 };
