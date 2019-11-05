@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import TemplateContext from '../../containers/template/TemplateContext';
 
 const TitleMain = () => {
+    const template = useContext(TemplateContext);
+
     return (
-        <TemplateContext.Consumer> 
-            {
-                ({title}) => (
-                    <h1 data-testid="titleMain">{ title }</h1>
-                )
-            }
-        </TemplateContext.Consumer>
+        <h1 data-testid="titleMain">
+            { template.title }
+        </h1>
     );
 };
 
