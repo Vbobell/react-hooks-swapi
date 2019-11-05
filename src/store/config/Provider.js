@@ -1,12 +1,12 @@
 import React, { useReducer } from 'react';
 import Context from './Context';
 import Middleware from './Middleware';
-import templateReducer, { templateStore } from '../template/Template';
+import filmsReducer, { filmsStore } from '../films/Films';
 
 const Provider = props => {
-    const [templateState] = useReducer(
-        templateReducer,
-        templateStore
+    const [filmsState] = useReducer(
+        filmsReducer,
+        filmsStore
     );
 
     const trigglerDispatchs = action => {
@@ -23,7 +23,7 @@ const Provider = props => {
 
     const combinedReducers = {
         store: {
-            ...templateState
+            ...filmsState
         },
         dispatch: middlewareContrutor
     };

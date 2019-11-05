@@ -1,9 +1,9 @@
 import { createContext } from 'react';
-import { templateStore } from '../template/Template';
+import { filmsStore } from '../films/Films';
 
 export const initialState = {
     store: {
-        ...templateStore
+        ...filmsStore
     },
     dispatch: () => {}
 };
