@@ -5,14 +5,14 @@ import Header from '../components/header/Header';
 import List from '../components/list/List';
 
 describe('<Films /> spec', () => {
-    it('Render header', () => {
+    it('Render header', async () => {
         const { getByTestId } = render(<Films/>);
         const elem = getByTestId('header');
 
         expect(elem.nodeName == 'HEADER');
     });
 
-    it('Render list', () => {
+    it('Render list', async () => {
         const { getByTestId } = render(<List/>);
         const elem = getByTestId('list');
 
@@ -21,7 +21,7 @@ describe('<Films /> spec', () => {
 });
 
 describe('<Header /> spec', () => {
-    it('Render h1', () => {
+    it('Render h1', async () => {
         const { getByTestId } = render(<Header/>);
         const elem = getByTestId('titleMain');
 

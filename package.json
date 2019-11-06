@@ -10,7 +10,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode development",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.7.1",
+    "axios": "^0.19.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2"
