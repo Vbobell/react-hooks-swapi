@@ -1,4 +1,5 @@
 import swApi from '../../services/api/SwApi';
+import ItemFilm from '../../components/item-film/ItemFilm';
 
 export const TYPES = {
     GET_LIST: 'GET_LIST',
@@ -10,7 +11,8 @@ export const filmsStore = {
     list: [{
         id: 0,
         name: 'Not itens'
-    }]
+    }],
+    listTemplate: ItemFilm
 };
 
 const filmsReducer = (state = filmsStore, action) => {
@@ -30,7 +32,7 @@ const filmsReducer = (state = filmsStore, action) => {
 };
 
 export async function getList(dispatch) {
-    const request = await swApi('films');
+    const request = await swApi.get('films');
     const json = await request.data;
 
     let { results } = json;

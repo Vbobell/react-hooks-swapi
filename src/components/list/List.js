@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Context from '../../store/config/Context';
+import Item from '../../components/item/Item';
 
 const List = () => {
     const { state } = useContext(Context);
@@ -8,9 +9,9 @@ const List = () => {
         <ul data-testid="list">
             {
                 state.list.map((item) => {
-                    return <li key={item.id}>
-                        { item.name }
-                    </li>;
+                    return state.listTemplate ? 
+                        <state.listTemplate {...item} key={item.id}/> : 
+                        <Item  {...item} key={item.id}/>;
                 })
             }
         </ul>
