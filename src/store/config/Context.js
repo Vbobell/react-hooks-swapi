@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import { filmsStore } from '../films/Films';
 
 export const initialState = {
-    store: {
+    state: {
         ...filmsStore
     },
     dispatch: () => {}

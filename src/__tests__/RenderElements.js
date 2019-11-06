@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Films from '../containers/films/Films';
 import Header from '../components/header/Header';
-import TitleMain from '../components/title-main/TitleMain';
 import List from '../components/list/List';
 
 describe('<Films /> spec', () => {
@@ -27,14 +26,5 @@ describe('<Header /> spec', () => {
         const elem = getByTestId('titleMain');
 
         expect(elem.nodeName == 'H1');
-    });
-});
-
-describe('<TitleMain /> spec', () => {
-    it('Check text h1', () => {
-        const { getByTestId } = render(<TitleMain/>);
-        const title = getByTestId('titleMain');
-
-        expect(title.textContent).toMatch(/default title/);
     });
 });

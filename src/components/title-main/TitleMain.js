@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import Context from '../../store/config/Context';
 
 const TitleMain = () => {
-    const { store } = useContext(Context);
+    const { state } = useContext(Context);
 
     return (
         <h1 data-testid="titleMain">
-            { store.title }
+            { state.title }
         </h1>
     );
 };

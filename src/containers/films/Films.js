@@ -5,11 +5,11 @@ import List from '../../components/list/List';
 import { getList } from '../../store/films/Films';
 
 const Films = () => {
-    const { store, dispatch } = useContext(Context);
+    const { dispatch } = useContext(Context);
 
     useEffect(() => {
         getList(dispatch);
-    }, [store]);
+    }, []);
 
     return (
         <Fragment>

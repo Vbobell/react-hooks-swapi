@@ -4,28 +4,16 @@ import Middleware from './Middleware';
 import filmsReducer, { filmsStore } from '../films/Films';
 
 const Provider = props => {
-    const [filmsState] = useReducer(
+    const [filmsState, dispatch] = useReducer(
         filmsReducer,
         filmsStore
     );
 
-    const trigglerDispatchs = action => {
-        const dispatchs = [];
-
-        for (let i = 0; i < dispatchs.length; i++) {
-            dispatchs[i](action);
-        }
-    };
-    
-    const middlewareContrutor = action => {
-        Middleware(action)(trigglerDispatchs);
-    };
-
     const combinedReducers = {
-        store: {
+        state: {
             ...filmsState
         },
-        dispatch: middlewareContrutor
+        dispatch
     };
 
     return (

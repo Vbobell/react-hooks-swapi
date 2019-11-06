@@ -1,7 +1,8 @@
 const BASE_URL = 'https://swapi.co/api';
 
 export const TYPES = {
-    GET_LIST: 'GET_LIST'
+    GET_LIST: 'GET_LIST',
+    ERROR: 'ERROR'
 };
 
 export const filmsStore = {
@@ -16,6 +17,11 @@ const filmsReducer = (state = filmsStore, action) => {
     switch (action.type) {
     case TYPES.GET_LIST:
         return {
+            ...state,
+            list: action.list
+        };
+    case TYPES.ERROR:
+        return {
             ...state
         };
     default:
@@ -23,16 +29,22 @@ const filmsReducer = (state = filmsStore, action) => {
     }
 };
 
-export async function getList() {
-    const res = await fetch(`${BASE_URL}/films`);
+export async function getList(dispatch) {
+    const request = await fetch(`${BASE_URL}/films`);
+    const json = await request.json();
+    let { results } = json;
 
-    res.json()
-        .then(res => console.log(res))
-        .catch(err => setErrors(err));
+    results = results.map((data) => {
+        return {
+            id: data.episode_id,
+            name: data.title
+        };
+    });
 
-    return {
-        type: TYPES.GET_LIST
-    };
+    return dispatch({
+        type: TYPES.GET_LIST,
+        list: results
+    });
 }
 
 export default filmsReducer;
