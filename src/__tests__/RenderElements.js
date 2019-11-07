@@ -4,40 +4,55 @@ import Films from '../containers/films/Films';
 import Header from '../components/header/Header';
 import List from '../components/list/List';
 import ListItem from '../components/list-item/ListItem';
+import SpaceBackground from '../components/space-background/SpaceBackground';
 
 describe('<Films /> spec', () => {
     it('Render content', async () => {
         const { getByTestId } = render(<Films/>);
         const header = getByTestId('header');
         const list = getByTestId('list');
+        const spaceBackground = getByTestId('space-background');
 
-        expect(header.nodeName == 'HEADER' && list.nodeName == 'UL');
+        expect(
+            header.nodeName == 'HEADER' && 
+            list.nodeName == 'UL' &&
+            spaceBackground.nodeName == 'CANVAS'
+        );
     });
 });
 
 describe('<Header /> spec', () => {
     it('Render h1', async () => {
         const { getByTestId } = render(<Header/>);
-        const elem = getByTestId('titleMain');
+        const elem = getByTestId('title-main');
 
         expect(elem.nodeName == 'H1');
     });
 });
 
 describe('<List /> spec', () => {
-    it('Render item film', async () => {
+    it('Render item list', async () => {
         const { getByTestId } = render(<List/>);
-        const elem = getByTestId('itemFilm');
+        const elem = getByTestId('item');
     
         expect(elem.nodeName == 'LI');
     });
 });
 
 describe('<ListItem /> spec', () => {
-    it('Render item list', async () => {
+    it('Render item', async () => {
         const { getByTestId } = render(<ListItem/>);
         const elem = getByTestId('item');
     
         expect(elem.nodeName == 'LI');
+    });
+});
+
+describe('<SpaceBackground /> spec', () => {
+    it('Render space background', async () => {
+        const { getByTestId } = render(<SpaceBackground/>);
+        const elem = getByTestId('space-background');
+    
+        expect(elem.nodeName == 'CANVAS');
     });
 });

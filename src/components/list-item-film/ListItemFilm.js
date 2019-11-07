@@ -2,7 +2,7 @@ import React from 'react';
 
 const ListItemFilm = props => {
     return (
-        <li data-testid="itemFilm">
+        <li data-testid="item">
             { props.name }
         </li>
     );

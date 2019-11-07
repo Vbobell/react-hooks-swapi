@@ -5,7 +5,7 @@ const TitleMain = () => {
     const { state } = useContext(Context);
 
     return (
-        <h1 data-testid="titleMain">
+        <h1 data-testid="title-main">
             { state.title }
         </h1>
     );

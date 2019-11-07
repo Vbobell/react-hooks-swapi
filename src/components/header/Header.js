@@ -4,7 +4,7 @@ import TitleMain from '../title-main/TitleMain';
 const Header = () => {
     return (
         <header data-testid="header">
-            <TitleMain></TitleMain>
+            <TitleMain />
         </header>
     );
 };
