@@ -3,20 +3,15 @@ import { render } from '@testing-library/react';
 import Films from '../containers/films/Films';
 import Header from '../components/header/Header';
 import List from '../components/list/List';
+import ListItem from '../components/list-item/ListItem';
 
 describe('<Films /> spec', () => {
-    it('Render header', async () => {
+    it('Render content', async () => {
         const { getByTestId } = render(<Films/>);
-        const elem = getByTestId('header');
+        const header = getByTestId('header');
+        const list = getByTestId('list');
 
-        expect(elem.nodeName == 'HEADER');
-    });
-
-    it('Render list', async () => {
-        const { getByTestId } = render(<List/>);
-        const elem = getByTestId('list');
-
-        expect(elem.nodeName == 'UL');
+        expect(header.nodeName == 'HEADER' && list.nodeName == 'UL');
     });
 });
 
@@ -26,5 +21,23 @@ describe('<Header /> spec', () => {
         const elem = getByTestId('titleMain');
 
         expect(elem.nodeName == 'H1');
+    });
+});
+
+describe('<List /> spec', () => {
+    it('Render item film', async () => {
+        const { getByTestId } = render(<List/>);
+        const elem = getByTestId('itemFilm');
+    
+        expect(elem.nodeName == 'LI');
+    });
+});
+
+describe('<ListItem /> spec', () => {
+    it('Render item list', async () => {
+        const { getByTestId } = render(<ListItem/>);
+        const elem = getByTestId('item');
+    
+        expect(elem.nodeName == 'LI');
     });
 });
