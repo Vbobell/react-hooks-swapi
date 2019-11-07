@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Context from '../../store/config/Context';
-import Item from '../../components/item/Item';
+import ListItem from '../../components/list-item/ListItem';
 
 const List = () => {
     const { state } = useContext(Context);
@@ -11,7 +11,7 @@ const List = () => {
                 state.list.map((item) => {
                     return state.listTemplate ? 
                         <state.listTemplate {...item} key={item.id}/> : 
-                        <Item  {...item} key={item.id}/>;
+                        <ListItem  {...item} key={item.id}/>;
                 })
             }
         </ul>

@@ -1,5 +1,5 @@
 import swApi from '../../services/api/SwApi';
-import ItemFilm from '../../components/item-film/ItemFilm';
+import ListItemFilm from '../../components/list-item-film/ListItemFilm';
 
 export const TYPES = {
     GET_LIST: 'GET_LIST',
@@ -12,7 +12,7 @@ export const filmsStore = {
         id: 0,
         name: 'Not itens'
     }],
-    listTemplate: ItemFilm
+    listTemplate: ListItemFilm
 };
 
 const filmsReducer = (state = filmsStore, action) => {

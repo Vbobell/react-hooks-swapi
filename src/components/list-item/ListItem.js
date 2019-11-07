@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Item = props => {
+const ListItem = props => {
     return (
         <li data-testid="item">
             { props.name }
@@ -8,4 +8,4 @@ const Item = props => {
     );
 };
 
-export default Item;
+export default ListItem;

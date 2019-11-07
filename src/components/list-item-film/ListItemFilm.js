@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ItemFilm = props => {
+const ListItemFilm = props => {
     return (
         <li data-testid="itemFilm">
             { props.name }
@@ -8,4 +8,4 @@ const ItemFilm = props => {
     );
 };
 
-export default ItemFilm;
+export default ListItemFilm;
