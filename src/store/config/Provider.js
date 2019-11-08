@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import Context from './Context';
 import Middleware from './Middleware';
 import filmsReducer, { filmsStore } from '../films/Films';
+import spaceBackgroundReducer, { spaceBackgroundStore } from '../space-background/SpaceBackground';
 
 const Provider = props => {
     const [filmsState, filmsDispatch] = useReducer(
@@ -9,12 +10,19 @@ const Provider = props => {
         filmsStore
     );
 
+    const [ spaceBackgroundState, spaceBackgroundDispatch] = useReducer(
+        spaceBackgroundReducer,
+        spaceBackgroundStore
+    );
+
     const combinedReducers = {
         state: {
-            listState: filmsState
+            listState: filmsState,
+            spaceBackgroundState: spaceBackgroundState
         },
         dispatch: {
-            filmsDispatch
+            filmsDispatch,
+            spaceBackgroundDispatch
         }
     };
 

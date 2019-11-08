@@ -1,9 +1,11 @@
 import { createContext } from 'react';
 import { filmsStore } from '../films/Films';
+import { spaceBackgroundStore } from '../space-background/SpaceBackground';
 
 export const initialState = {
     state: {
-        listState: filmsStore
+        listState: filmsStore,
+        spaceBackgroundState: spaceBackgroundStore
     },
     dispatch: () => {}
 };
