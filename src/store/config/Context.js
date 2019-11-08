@@ -3,7 +3,7 @@ import { filmsStore } from '../films/Films';
 
 export const initialState = {
     state: {
-        ...filmsStore
+        listState: filmsStore
     },
     dispatch: () => {}
 };

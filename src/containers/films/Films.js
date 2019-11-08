@@ -9,9 +9,10 @@ import '../Containers.scss';
 
 const Films = () => {
     const { dispatch } = useContext(Context);
+    const { filmsDispatch } = dispatch;
 
     useEffect(() => {
-        getList(dispatch);
+        getList(filmsDispatch);
     }, []);
 
     return (

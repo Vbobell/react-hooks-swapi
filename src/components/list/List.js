@@ -4,13 +4,14 @@ import ListItem from '../../components/list-item/ListItem';
 
 const List = () => {
     const { state } = useContext(Context);
+    const { listState } = state;
 
     return (
         <ul data-testid="list">
             {
-                state.list.map((item) => {
-                    return state.listTemplate ? 
-                        <state.listTemplate {...item} key={item.id}/> : 
+                listState.list.map((item) => {
+                    return listState.listTemplate ? 
+                        <listState.listTemplate {...item} key={item.id}/> : 
                         <ListItem  {...item} key={item.id}/>;
                 })
             }
