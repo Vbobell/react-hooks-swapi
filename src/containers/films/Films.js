@@ -11,7 +11,7 @@ const Films = () => {
     const { dispatch } = useContext(Context);
 
     useEffect(() => {
-        //getList(dispatch);
+        getList(dispatch);
     }, []);
 
     return (

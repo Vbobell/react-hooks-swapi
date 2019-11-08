@@ -10,7 +10,8 @@ export const filmsStore = {
     title: 'Filmes',
     list: [{
         id: 0,
-        name: 'Not itens'
+        name: 'Não há filmes',
+        description: 'Aguarde carregando..'
     }],
     listTemplate: ListItemFilm
 };
@@ -46,7 +47,8 @@ export async function getList(dispatch) {
         results = results.map((data) => {
             return {
                 id: data.episode_id,
-                name: data.title
+                name: data.title,
+                description: data.opening_crawl
             };
         });
 

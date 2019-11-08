@@ -2,12 +2,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 module.exports = {
     entry: path.join(__dirname, './src/index.js'),
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: ASSET_PATH
     },
     devServer: {
         historyApiFallback: true,
