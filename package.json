@@ -14,9 +14,13 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__tests__/",
       "\\.(css|scss)$": "identity-obj-proxy"
-    }
+    },
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "jest-transform-stub"
+    },
+    "setupFiles": [ "jest-canvas-mock" ]
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
@@ -26,6 +30,7 @@
     "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
+    "@svgr/webpack": "^4.3.3",
     "@testing-library/react": "^9.3.1",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
@@ -37,6 +42,8 @@
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
+    "jest-canvas-mock": "^2.2.0",
+    "jest-transform-stub": "^2.0.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
     "sass-loader": "^8.0.0",

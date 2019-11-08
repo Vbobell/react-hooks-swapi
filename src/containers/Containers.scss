@@ -1,0 +1,40 @@
+@import '../components/variables.scss';
+
+#root {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    width: calc(#{$size-pec-12} - #{$size-em-2});
+    padding: 0 $size-em-1;
+    position: relative;
+    background-color: $bg-primary;
+    z-index: 2;
+
+    &-header {
+        border-bottom: 1px solid $border-primary;
+        box-shadow: 0px 2px 8px 0px $border-primary;
+    }
+
+    &-section {
+        width: calc(#{$size-pec-12} - #{$size-em-4});
+        margin: 10% 0 0 0;
+        border: 1px solid $border-primary;
+    }
+}
+
+.content {
+    &-image {
+        display: flex;
+        width: $size-pec-2;
+
+        svg {
+            width: $size-pec-12;
+            height: $size-pec-12;
+        }
+    }
+}

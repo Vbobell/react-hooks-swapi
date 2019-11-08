@@ -17,10 +17,7 @@ const SpaceBackground = () => {
             starsBackground = new StarsBackground(50, 300, innerWidth, innerHeight, canvas);
 
             starsBackground.init();
-
-            setInterval(() => {
-                starsBackground.animate();
-            }, 50);
+            starsBackground.animate();
         }
     }, []);
 

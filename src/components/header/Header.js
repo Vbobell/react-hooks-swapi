@@ -1,10 +1,10 @@
 import React from 'react';
-import TitleMain from '../title-main/TitleMain';
+import Logo from '../logo/Logo';
 
 const Header = () => {
     return (
-        <header data-testid="header">
-            <TitleMain />
+        <header className="container container-header" data-testid="header">
+            <Logo />
         </header>
     );
 };

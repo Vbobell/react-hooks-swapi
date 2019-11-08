@@ -24,7 +24,7 @@ class Star {
         ctx.fillRect(this.x, this.y , this.length, this.length);
         ctx.closePath();
 
-        ctx.fillStyle = `rgba(255, 255, 200, ${this.opacity}`;
+        ctx.fillStyle = 'rgba(255, 255, 255, 1)';
 
         ctx.fill();
         

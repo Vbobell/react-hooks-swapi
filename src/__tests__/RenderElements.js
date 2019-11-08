@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Films from '../containers/films/Films';
 import Header from '../components/header/Header';
+import Logo from '../components/logo/Logo';
 import List from '../components/list/List';
 import ListItem from '../components/list-item/ListItem';
 import SpaceBackground from '../components/space-background/SpaceBackground';
@@ -22,11 +23,11 @@ describe('<Films /> spec', () => {
 });
 
 describe('<Header /> spec', () => {
-    it('Render h1', async () => {
+    it('Render logo', async () => {
         const { getByTestId } = render(<Header/>);
-        const elem = getByTestId('title-main');
+        const elem = getByTestId('logo');
 
-        expect(elem.nodeName == 'H1');
+        expect(elem.nodeName == 'FIGURE');
     });
 });
 

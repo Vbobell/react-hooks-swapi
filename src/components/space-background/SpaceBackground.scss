@@ -1,6 +1,9 @@
+@import '../variables.scss';
+
 #space-background {
     position: absolute;
     top: 0;
     left: 0;
-    background: #000000;
+    background: $bg-primary;
+    z-index: 1;
 }
