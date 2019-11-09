@@ -1,8 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import Context from '../../store/config/Context';
 import { setStar, renderStar } from '../../store/space-background/SpaceBackground';
-import StarsBackground from '../../models/StarsBackground';
-
 
 import './SpaceBackground.scss';
 
@@ -12,25 +10,16 @@ const SpaceBackground = () => {
     const { spaceBackgroundState } = state;
     const { spaceBackgroundDispatch } = dispatch;
 
-    useEffect(() => {
+    const initBackground = async () => {
         const { innerWidth, innerHeight } = window;
         const canvas = document.querySelector('#space-background');
 
-        setStar(spaceBackgroundState, spaceBackgroundDispatch, { canvas, innerWidth, innerHeight });
-        
+        await setStar(spaceBackgroundState, spaceBackgroundDispatch, { canvas, innerWidth, innerHeight });
+        await renderStar(spaceBackgroundState, spaceBackgroundDispatch);
+    };
 
-        /*const { innerWidth, innerHeight } = window;
-        const canvas = document.querySelector('#space-background');
-
-        canvas.setAttribute('width', innerWidth);
-        canvas.setAttribute('height', innerHeight);
-
-        if (canvas) {
-            starsBackground = new StarsBackground(50, 300, innerWidth, innerHeight, canvas);
-
-            starsBackground.init();
-            starsBackground.animate();
-        }*/
+    useEffect(() => {
+        initBackground();
     }, []);
 
     return (

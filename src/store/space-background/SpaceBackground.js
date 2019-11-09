@@ -3,6 +3,7 @@ import Star from '../../models/Star';
 export const TYPES = {
     FILL_STARS: 'FILL_STARS',
     RENDER_STARS: 'RENDER_STARS',
+    SET_CANVAS_DIMENSIONS: 'SET_CANVAS_DIMENSIONS',
     ERROR: 'ERROR'
 };
 
@@ -18,6 +19,7 @@ export const spaceBackgroundStore = {
 const spaceBackgroundReducer = (state = spaceBackgroundStore, action) => {
     switch (action.type) {
     case TYPES.FILL_STARS:
+    case TYPES.SET_CANVAS_DIMENSIONS:
         return {
             ...state,
             state: action.state
@@ -60,7 +62,6 @@ export async function setStar(state, dispatch, { canvas, innerWidth, innerHeight
 }
 
 export async function renderStar(state, dispatch) {
-    console.log(state);
     let ctx = state.canvas.getContext('2d');
 
     ctx.clearRect(0, 0, state.innerWidth, state.innerHeight);
@@ -71,6 +72,19 @@ export async function renderStar(state, dispatch) {
 
     return dispatch({
         type: TYPES.RENDER_STARS,
+        state
+    });
+}
+
+export async function setCanvasDimensions(state, dispatch, {clientWidth, clientHeight}) {
+    state.innerWidth = clientWidth;
+    state.innerHeight = clientHeight;
+
+    state.canvas.setAttribute('width', clientWidth);
+    state.canvas.setAttribute('height', clientHeight);
+
+    return dispatch({
+        type: TYPES.SET_CANVAS_DIMENSIONS,
         state
     });
 }
