@@ -7,7 +7,7 @@ const List = () => {
     const { listState } = state;
 
     return (
-        <ul data-testid="list">
+        <ul data-testid="list" className="content-list">
             {
                 listState.list.map((item) => {
                     return listState.listTemplate ? 

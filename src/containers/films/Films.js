@@ -6,7 +6,7 @@ import SpaceBackground from '../../components/space-background/SpaceBackground';
 import { getList } from '../../store/films/Films';
 import { setCanvasDimensions } from '../../store/space-background/SpaceBackground';
 
-import '../Containers.scss';
+import '../template.scss';
 
 const Films = () => {
     const { state, dispatch } = useContext(Context);

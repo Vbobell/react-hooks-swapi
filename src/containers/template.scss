@@ -1,0 +1,116 @@
+@import './variables.scss';
+@import './font.scss';
+
+#root {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: $bg-primary;
+    font-family: 'STARWARS';
+}
+
+.container {
+    display: flex;
+    width: calc(#{$size-pec-12} - #{$size-em-2});
+    position: relative;
+    color: $font-c-primary;
+    box-shadow: 0px 2px 8px 0px $box-shadow-primary;
+    z-index: 2;
+
+    &-header {
+        justify-content: center;
+        padding: 0 $size-em-1;
+        border-bottom: 1px solid $border-primary;
+        background-color: $bg-primary;
+
+        .content {
+            &-image {
+                width: $size-pec-3;
+            }
+        }
+    }
+
+    &-section {
+        width: calc(#{$size-pec-12} - #{$size-em-4 * 2});
+        padding: $size-em-2;
+        margin: 10% 0;
+        border: 1px solid $border-primary;
+    }
+}
+
+.content {
+    &-image {
+        display: flex;
+        justify-content: center;
+        width: $size-pec-12;
+
+        svg {
+            width: $size-pec-12;
+            height: $size-pec-12;
+        }
+
+        img {
+            width: $size-pec-12;
+        }
+    }
+
+    &-text {
+        h2 {
+            margin: 0 0 $size-em-1 0;
+            font-size: $size-em-3;
+            color: $font-c-h2;
+        }
+    }
+
+    &-image + &-text {
+        margin: $size-em-2 0 0 0;
+    }
+
+    &-list {
+        li {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            align-content: flex-start;
+            justify-content: space-between;
+            width: $size-pec-12;
+
+            &:not(:first-child) {
+                margin: $size-em-4 0 0 0;
+            }
+        }
+    }
+}
+
+@media all and (min-width: 992px) {
+    .container {
+        &-header {
+            justify-content: space-between;
+    
+            .content {
+                &-image {
+                    width: $size-pec-1;
+                }
+            }
+        }
+
+        &-section {
+            width: $size-pec-8;
+            margin: $size-em-4 0;
+        }
+    }
+
+    .content {
+        &-list {
+            .content-image {
+                width: $size-pec-2;
+            }
+
+            .content-text {
+                width: calc(#{$size-pec-10} - #{$size-em-2});
+                margin: 0;
+            }
+        }
+    }
+}

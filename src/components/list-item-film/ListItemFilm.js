@@ -1,4 +1,6 @@
 import React from 'react';
+import ContentImage from '../content-image/ContentImage';
+import ContentText from '../content-text/ContentText';
 
 const ListItemFilm = props => {
     const url = props.id == 0 ? 
@@ -7,13 +9,8 @@ const ListItemFilm = props => {
 
     return (
         <li data-testid="item">
-            <figure>
-                <img src={ url }/>
-            </figure>
-            <article>
-                <h2>{ props.name }</h2>
-                <p> { props.description }</p>
-            </article>
+            <ContentImage url={ url } />
+            <ContentText {...props} />
         </li>
     );
 };

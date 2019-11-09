@@ -3,6 +3,10 @@ $size-em-1: 0.5em;
 $size-em-2: 1em;
 $size-em-3: 1.5em;
 $size-em-4: 2em;
+$size-em-5: 2.5em;
+$size-em-6: 3em;
+$size-em-7: 3.5em;
+$size-em-8: 4em;
 
 $size-pec-1: 8.33%;
 $size-pec-2: 16.66%;
@@ -21,5 +25,11 @@ $size-pec-12: 100%;
 //colors
 $bg-primary: rgb(021, 032, 043);
 $bg-black:  rgb(000, 000, 000);
-$border-primary: rgb(056, 068, 077);
+
+$border-primary: rgb(12, 136, 176);
+
+$box-shadow-primary: $border-primary;
+
+$font-c-primary: rgb(255, 255, 255);
+$font-c-h2: rgb(255, 194, 061);
 //colors
