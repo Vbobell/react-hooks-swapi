@@ -7,11 +7,11 @@ export const TYPES = {
 };
 
 export const filmsStore = {
-    title: 'Filmes',
+    title: 'Films',
     list: [{
         id: 0,
-        name: 'Não há filmes',
-        description: 'Aguarde carregando..'
+        name: 'Wait..',
+        description: ''
     }],
     listTemplate: ListItemFilm
 };

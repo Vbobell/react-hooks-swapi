@@ -2,21 +2,19 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Films from '../containers/films/Films';
 import Header from '../components/header/Header';
-import Logo from '../components/logo/Logo';
 import List from '../components/list/List';
-import ListItem from '../components/list-item/ListItem';
 import SpaceBackground from '../components/space-background/SpaceBackground';
 
 describe('<Films /> spec', () => {
     it('Render content', async () => {
         const { getByTestId } = render(<Films/>);
         const header = getByTestId('header');
-        const list = getByTestId('list');
+        const sectionFilms = getByTestId('section-films');
         const spaceBackground = getByTestId('space-background');
 
         expect(
             header.nodeName == 'HEADER' && 
-            list.nodeName == 'UL' &&
+            sectionFilms.nodeName == 'SECTION' &&
             spaceBackground.nodeName == 'CANVAS'
         );
     });
@@ -34,15 +32,6 @@ describe('<Header /> spec', () => {
 describe('<List /> spec', () => {
     it('Render item list', async () => {
         const { getByTestId } = render(<List/>);
-        const elem = getByTestId('item');
-    
-        expect(elem.nodeName == 'LI');
-    });
-});
-
-describe('<ListItem /> spec', () => {
-    it('Render item', async () => {
-        const { getByTestId } = render(<ListItem/>);
         const elem = getByTestId('item');
     
         expect(elem.nodeName == 'LI');

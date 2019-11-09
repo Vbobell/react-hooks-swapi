@@ -4,7 +4,7 @@ import Header from '../../components/header/Header';
 import SectionFilms from '../../components/section-films/SectionFilms';
 import SpaceBackground from '../../components/space-background/SpaceBackground';
 import { getList } from '../../store/films/Films';
-import { setCanvasDimensions } from '../../store/space-background/SpaceBackground';
+import { setCanvasDimensions, fillStars, renderStar } from '../../store/space-background/SpaceBackground';
 
 import '../template.scss';
 
@@ -16,8 +16,17 @@ const Films = () => {
     const initFilms = async () => {
         await getList(filmsDispatch);
 
-        const { clientWidth, clientHeight } = document.body;
-        await setCanvasDimensions(spaceBackgroundState, spaceBackgroundDispatch, { clientWidth, clientHeight });
+        setTimeout( async () => {
+            const { clientWidth, clientHeight } = document.body;
+            const paramsFill = {
+                numStars: 600,
+                diffHeight: spaceBackgroundState.innerHeight
+            };        
+
+            await setCanvasDimensions(spaceBackgroundState, spaceBackgroundDispatch, { clientWidth, clientHeight });
+            await fillStars(spaceBackgroundState, spaceBackgroundDispatch, paramsFill);
+            await renderStar(spaceBackgroundState, spaceBackgroundDispatch);
+        }, 50);
     };
 
     useEffect(() => {

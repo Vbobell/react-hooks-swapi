@@ -3,10 +3,11 @@ import Context from '../../store/config/Context';
 
 const TitleMain = () => {
     const { state } = useContext(Context);
+    const { listState } = state;
 
     return (
         <h1 data-testid="title-main">
-            { state.title }
+            { listState.title }
         </h1>
     );
 };

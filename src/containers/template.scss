@@ -6,12 +6,13 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background-color: $bg-primary;
+    background-color: $bg-space;
     font-family: 'STARWARS';
 }
 
 .container {
     display: flex;
+    flex-wrap: wrap;
     width: calc(#{$size-pec-12} - #{$size-em-2});
     position: relative;
     color: $font-c-primary;
@@ -36,6 +37,13 @@
         padding: $size-em-2;
         margin: 10% 0;
         border: 1px solid $border-primary;
+        background-color: rgba(12, 136, 176, 0.2);
+    }
+
+    h1 {
+        width: $size-pec-12;
+        margin: 0 0 $size-em-1 0;
+        font-size: $size-em-4;
     }
 }
 

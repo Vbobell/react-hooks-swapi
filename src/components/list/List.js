@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Context from '../../store/config/Context';
-import ListItem from '../../components/list-item/ListItem';
+import ListItem from '../list-item/ListItem';
 
 const List = () => {
     const { state } = useContext(Context);

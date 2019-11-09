@@ -38,6 +38,11 @@ const spaceBackgroundReducer = (state = spaceBackgroundStore, action) => {
 };
 
 export async function setStar(state, dispatch, { canvas, innerWidth, innerHeight }) {
+    const paramsFill = {
+        numStars: state.numStars,
+        diffHeight: 0 
+    };
+
     state.canvas = canvas;
     state.innerWidth = innerWidth;
     state.innerHeight = innerHeight;
@@ -45,20 +50,7 @@ export async function setStar(state, dispatch, { canvas, innerWidth, innerHeight
     canvas.setAttribute('width', innerWidth);
     canvas.setAttribute('height', innerHeight);
 
-    for(var i = 0; i < state.numStars; i++) {
-        var x = Math.round(Math.random() * innerWidth);
-        var y = Math.round(Math.random() * innerHeight);
-        var opacity = Math.random() * 0.5;
-
-        var star = new Star(x, y, opacity, canvas);
-        
-        state.stars.push(star);
-    }
-
-    return dispatch({
-        type: TYPES.FILL_STARS,
-        state
-    });
+    return fillStars(state, dispatch, paramsFill);
 }
 
 export async function renderStar(state, dispatch) {
@@ -72,6 +64,25 @@ export async function renderStar(state, dispatch) {
 
     return dispatch({
         type: TYPES.RENDER_STARS,
+        state
+    });
+}
+
+export function fillStars(state, dispatch, { numStars, diffHeight }) {
+    for(var i = 0; i < numStars; i++) {
+        var x = Math.round(Math.random() * state.innerWidth);
+        var y = Math.round(Math.random() * state.innerHeight) + diffHeight;
+        var opacity = Math.random() * 0.5;
+
+        var star = new Star(x, y, opacity, state.canvas);
+        
+        state.stars.push(star);
+    }
+
+    state.numStars = numStars;
+
+    return dispatch({
+        type: TYPES.FILL_STARS,
         state
     });
 }
