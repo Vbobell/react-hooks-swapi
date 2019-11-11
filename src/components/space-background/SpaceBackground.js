@@ -14,8 +14,10 @@ const SpaceBackground = () => {
         const { innerWidth, innerHeight } = window;
         const canvas = document.querySelector('#space-background');
 
-        await setStar(spaceBackgroundState, spaceBackgroundDispatch, { canvas, innerWidth, innerHeight });
-        await renderStar(spaceBackgroundState, spaceBackgroundDispatch);
+        if (spaceBackgroundDispatch) {
+            await setStar(spaceBackgroundState, spaceBackgroundDispatch, { canvas, innerWidth, innerHeight });
+            await renderStar(spaceBackgroundState, spaceBackgroundDispatch);
+        }
     };
 
     useEffect(() => {

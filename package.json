@@ -20,7 +20,9 @@
       "^.+\\.js$": "babel-jest",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "jest-transform-stub"
     },
-    "setupFiles": [ "jest-canvas-mock" ]
+    "setupFiles": [
+      "jest-canvas-mock"
+    ]
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
@@ -35,6 +37,7 @@
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-inline-react-svg": "^1.1.0",
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "eslint": "^6.6.0",

@@ -14,19 +14,23 @@ const Films = () => {
     const { filmsDispatch, spaceBackgroundDispatch } = dispatch;
 
     const initFilms = async () => {
-        await getList(filmsDispatch);
+        if (filmsDispatch) {
+            await getList(filmsDispatch);
+        }
 
-        setTimeout( async () => {
-            const { clientWidth, clientHeight } = document.body;
-            const paramsFill = {
-                numStars: 600,
-                diffHeight: spaceBackgroundState.innerHeight
-            };        
+        if (spaceBackgroundState) {
+            setTimeout( async () => {
+                const { clientWidth, clientHeight } = document.body;
+                const paramsFill = {
+                    numStars: 600,
+                    diffHeight: spaceBackgroundState.innerHeight
+                };        
 
-            await setCanvasDimensions(spaceBackgroundState, spaceBackgroundDispatch, { clientWidth, clientHeight });
-            await fillStars(spaceBackgroundState, spaceBackgroundDispatch, paramsFill);
-            await renderStar(spaceBackgroundState, spaceBackgroundDispatch);
-        }, 50);
+                await setCanvasDimensions(spaceBackgroundState, spaceBackgroundDispatch, { clientWidth, clientHeight });
+                await fillStars(spaceBackgroundState, spaceBackgroundDispatch, paramsFill);
+                await renderStar(spaceBackgroundState, spaceBackgroundDispatch);
+            }, 50);
+        }
     };
 
     useEffect(() => {
