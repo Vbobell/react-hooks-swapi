@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-const ContentImage = props => {
-    return (
-        <figure className="content-image">
-            <img src={ props.url }/>
-        </figure>
-    );
+const ContentImage = (props) => {
+  return (
+    <figure className="content-image">
+      <i className={props.url}></i>
+    </figure>
+  );
 };
 
 export default ContentImage;
