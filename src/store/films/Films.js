@@ -1,5 +1,4 @@
 import swApi from "../../services/api/SwApi";
-import ListItemFilm from "../../components/list-item-film/ListItemFilm";
 
 export const TYPES = {
   GET_LIST: "GET_LIST",
@@ -15,7 +14,6 @@ export const filmsStore = {
       description: "",
     },
   ],
-  listTemplate: ListItemFilm,
 };
 
 const filmsReducer = (state = filmsStore, action) => {
