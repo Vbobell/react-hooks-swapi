@@ -1,37 +1,75 @@
-import React, { useEffect, useContext } from "react";
-import Context from "../../store/config/Context";
+import React, { useEffect, useRef } from "react";
 import {
-  setStar,
+  useSpaceBackgroundContext,
+  setCanvasDimensions,
+  fillStars,
   renderStar,
-} from "../../store/space-background/SpaceBackground";
+} from "../../store/space-background";
 
 import "./SpaceBackground.scss";
 
-function SpaceBackground() {
-  const { state, dispatch } = useContext(Context);
-
-  const { spaceBackgroundState } = state;
-  const { spaceBackgroundDispatch } = dispatch;
-
-  async function initBackground() {
-    const { innerWidth, innerHeight } = window;
-    const canvas = document.querySelector("#space-background");
-
-    if (spaceBackgroundDispatch) {
-      await setStar(spaceBackgroundState, spaceBackgroundDispatch, {
-        canvas,
-        innerWidth,
-        innerHeight,
-      });
-      await renderStar(spaceBackgroundState, spaceBackgroundDispatch);
-    }
-  }
+function SpaceBackground({ width, height }) {
+  const [state, dispatch] = useSpaceBackgroundContext();
+  const { stars, numStars, innerWidth, innerHeight } = state;
+  const canvasRef = useRef(null);
 
   useEffect(() => {
-    initBackground();
-  }, []);
+    function initCanvas() {
+      const canvas = canvasRef.current;
 
-  return <canvas data-testid="space-background" id="space-background"></canvas>;
+      if (canvas) {
+        setCanvasDimensions(dispatch, {
+          width,
+          height,
+          canvas,
+        });
+      }
+    }
+
+    initCanvas();
+  }, [width, height, dispatch]);
+
+  useEffect(() => {
+    function initStars() {
+      const canvas = canvasRef.current;
+
+      if (canvas) {
+        fillStars(dispatch, {
+          canvas,
+          numStars,
+          innerWidth,
+          innerHeight,
+        });
+      }
+    }
+
+    initStars();
+  }, [numStars, innerWidth, innerHeight, dispatch]);
+
+  useEffect(() => {
+    function initRenderStars() {
+      const canvas = canvasRef.current;
+
+      if (canvas) {
+        renderStar(dispatch, {
+          canvas,
+          stars,
+          innerWidth,
+          innerHeight,
+        });
+      }
+    }
+
+    initRenderStars();
+  }, [stars, innerWidth, innerHeight, dispatch]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      data-testid="space-background"
+      id="space-background"
+    ></canvas>
+  );
 }
 
 export default SpaceBackground;

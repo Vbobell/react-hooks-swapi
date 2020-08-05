@@ -1,103 +1,138 @@
-import Star from '../../models/Star';
+import React, { useContext, useReducer, createContext } from "react";
+import Star from "../../models/Star";
 
 export const TYPES = {
-    FILL_STARS: 'FILL_STARS',
-    RENDER_STARS: 'RENDER_STARS',
-    SET_CANVAS_DIMENSIONS: 'SET_CANVAS_DIMENSIONS',
-    ERROR: 'ERROR'
+  FILL_STARS: "FILL_STARS",
+  RENDER_STARS: "RENDER_STARS",
+  SET_CANVAS_DIMENSIONS: "SET_CANVAS_DIMENSIONS",
+  ERROR: "ERROR",
 };
 
-export const spaceBackgroundStore = {
-    fps: 50,
-    numStars: 300,
-    innerWidth: null,
-    innerHeight: null,
-    canvas: null,
-    stars: []
+export const initialContext = {
+  fps: 50,
+  numStars: 300,
+  innerWidth: null,
+  innerHeight: null,
+  stars: [],
 };
 
-const spaceBackgroundReducer = (state = spaceBackgroundStore, action) => {
-    switch (action.type) {
+export const SpaceBackgroundStateContext = createContext();
+export const SpaceBackgroundDispatchContext = createContext();
+
+const spaceBackgroundReducer = (state, action) => {
+  switch (action.type) {
     case TYPES.FILL_STARS:
     case TYPES.SET_CANVAS_DIMENSIONS:
-        return {
-            ...state,
-            state: action.state
-        };
+      return {
+        ...state,
+        ...action.state,
+      };
     case TYPES.RENDER_STARS:
-        return {
-            ...state
-        };
+      return {
+        ...state,
+      };
     case TYPES.ERROR:
-        return {
-            ...state
-        };
+      return {
+        ...state,
+      };
     default:
-        return state;
-    }
+      return state;
+  }
 };
 
-export async function setStar(state, dispatch, { canvas, innerWidth, innerHeight }) {
-    const paramsFill = {
-        numStars: state.numStars,
-        diffHeight: 0 
-    };
+export function SpaceBackgroundProvider({ children, ...props }) {
+  const [state, dispatch] = useReducer(spaceBackgroundReducer, {
+    ...initialContext,
+  });
 
-    state.canvas = canvas;
-    state.innerWidth = innerWidth;
-    state.innerHeight = innerHeight;
-
-    canvas.setAttribute('width', innerWidth);
-    canvas.setAttribute('height', innerHeight);
-
-    return fillStars(state, dispatch, paramsFill);
+  return (
+    <SpaceBackgroundStateContext.Provider value={state} {...props}>
+      <SpaceBackgroundDispatchContext.Provider value={dispatch}>
+        {children}
+      </SpaceBackgroundDispatchContext.Provider>
+    </SpaceBackgroundStateContext.Provider>
+  );
 }
 
-export async function renderStar(state, dispatch) {
-    let ctx = state.canvas.getContext('2d');
+export function useSpaceBackgroundState() {
+  const context = useContext(SpaceBackgroundStateContext);
 
-    ctx.clearRect(0, 0, state.innerWidth, state.innerHeight);
+  if (!context) {
+    throw new Error(
+      "useSpaceBackgroundState must be used after an SpaceBackgroundStateContext.Provider"
+    );
+  }
 
-    state.stars.forEach(function(star) {
-        star.draw();
-    });
-
-    return dispatch({
-        type: TYPES.RENDER_STARS,
-        state
-    });
+  return context;
 }
 
-export function fillStars(state, dispatch, { numStars, diffHeight }) {
-    for(var i = 0; i < numStars; i++) {
-        var x = Math.round(Math.random() * state.innerWidth);
-        var y = Math.round(Math.random() * state.innerHeight) + diffHeight;
-        var opacity = Math.random() * 0.5;
+export function useSpaceBackgroundDispatch() {
+  const context = useContext(SpaceBackgroundDispatchContext);
 
-        var star = new Star(x, y, opacity, state.canvas);
-        
-        state.stars.push(star);
-    }
+  if (!context) {
+    throw new Error(
+      "useSpaceBackgroundDispatch must be used after and SpaceBackgroundDispatchContext.Provider"
+    );
+  }
 
-    state.numStars = numStars;
-
-    return dispatch({
-        type: TYPES.FILL_STARS,
-        state
-    });
+  return context;
 }
 
-export async function setCanvasDimensions(state, dispatch, {clientWidth, clientHeight}) {
-    state.innerWidth = clientWidth;
-    state.innerHeight = clientHeight;
+export function useSpaceBackgroundContext() {
+  return [useSpaceBackgroundState(), useSpaceBackgroundDispatch()];
+}
 
-    state.canvas.setAttribute('width', clientWidth);
-    state.canvas.setAttribute('height', clientHeight);
+export function setCanvasDimensions(dispatch, { width, height, canvas }) {
+  canvas.setAttribute("width", width);
+  canvas.setAttribute("height", height);
 
-    return dispatch({
-        type: TYPES.SET_CANVAS_DIMENSIONS,
-        state
-    });
+  return dispatch({
+    type: TYPES.SET_CANVAS_DIMENSIONS,
+    state: {
+      innerWidth: width,
+      innerHeight: height,
+    },
+  });
+}
+
+export function fillStars(
+  dispatch,
+  { innerWidth, innerHeight, canvas, numStars }
+) {
+  const stars = [];
+
+  for (var i = 0; i < numStars; i++) {
+    var x = Math.round(Math.random() * innerWidth);
+    var y = Math.round(Math.random() * innerHeight);
+    var opacity = Math.random() * 0.5;
+
+    var star = new Star(x, y, opacity, canvas);
+
+    stars.push(star);
+  }
+
+  return dispatch({
+    type: TYPES.FILL_STARS,
+    state: { numStars, stars },
+  });
+}
+
+export function renderStar(
+  dispatch,
+  { canvas, stars, innerWidth, innerHeight }
+) {
+  let ctx = canvas.getContext("2d");
+
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+  stars.forEach(function (star) {
+    star.draw();
+  });
+
+  return dispatch({
+    type: TYPES.RENDER_STARS,
+    state: { stars },
+  });
 }
 
 export default spaceBackgroundReducer;

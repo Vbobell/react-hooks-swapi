@@ -1,17 +1,17 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Provider from "../store/config/Provider";
+import { FilmsProvider } from "../store/films";
 import Films from "../containers/films/Films";
 
 function Routes() {
   return (
-    <Provider>
-      <BrowserRouter>
-        <Switch>
+    <BrowserRouter>
+      <Switch>
+        <FilmsProvider>
           <Route path="/" exact={true} component={Films} />
-        </Switch>
-      </BrowserRouter>
-    </Provider>
+        </FilmsProvider>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

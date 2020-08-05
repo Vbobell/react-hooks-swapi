@@ -1,11 +1,7 @@
-import React, { useContext } from "react";
-import Context from "../../store/config/Context";
+import React from "react";
 
-function TitleMain() {
-  const { state } = useContext(Context);
-  const { listState } = state;
-
-  return <h1 data-testid="title-main">{listState.title}</h1>;
+function TitleMain({ children }) {
+  return <h1>{children}</h1>;
 }
 
 export default TitleMain;
