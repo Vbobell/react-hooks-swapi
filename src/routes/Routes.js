@@ -1,19 +1,18 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Provider from '../store/config/Provider';
-import Films from '../containers/films/Films';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { FilmsProvider } from "../store/films";
+import Films from "../containers/films/Films";
 
-
-const Routes = () => {
-    return (
-        <Provider>
-            <BrowserRouter>
-                <Switch>
-                    <Route path="/" exact={true} component={Films} />
-                </Switch>
-            </ BrowserRouter>
-        </Provider>
-    );
-};
+function Routes() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <FilmsProvider>
+          <Route path="/" exact={true} component={Films} />
+        </FilmsProvider>
+      </Switch>
+    </BrowserRouter>
+  );
+}
 
 export default Routes;

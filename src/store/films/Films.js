@@ -1,12 +1,12 @@
+import React, { useContext, useReducer, createContext } from "react";
 import swApi from "../../services/api/SwApi";
-import ListItemFilm from "../../components/list-item-film/ListItemFilm";
 
 export const TYPES = {
   GET_LIST: "GET_LIST",
   ERROR: "ERROR",
 };
 
-export const filmsStore = {
+export const initialContext = {
   title: "Films",
   list: [
     {
@@ -15,10 +15,12 @@ export const filmsStore = {
       description: "",
     },
   ],
-  listTemplate: ListItemFilm,
 };
 
-const filmsReducer = (state = filmsStore, action) => {
+export const FilmsStateContext = createContext();
+export const FilmsDispatchContext = createContext();
+
+const filmsReducer = (state, action) => {
   switch (action.type) {
     case TYPES.GET_LIST:
       return {
@@ -33,6 +35,46 @@ const filmsReducer = (state = filmsStore, action) => {
       return state;
   }
 };
+
+export function FilmsProvider({ children, ...props }) {
+  const [state, dispatch] = useReducer(filmsReducer, { ...initialContext });
+
+  return (
+    <FilmsStateContext.Provider value={state} {...props}>
+      <FilmsDispatchContext.Provider value={dispatch}>
+        {children}
+      </FilmsDispatchContext.Provider>
+    </FilmsStateContext.Provider>
+  );
+}
+
+export function useFilmsState() {
+  const context = useContext(FilmsStateContext);
+
+  if (!context) {
+    throw new Error(
+      "useFilmsState must be used after an FilmsStateContext.Provider"
+    );
+  }
+
+  return context;
+}
+
+export function useFilmsDispatch() {
+  const context = useContext(FilmsDispatchContext);
+
+  if (!context) {
+    throw new Error(
+      "useFilmsDispatch must be used after and FilmsDispatchContext.Provider"
+    );
+  }
+
+  return context;
+}
+
+export function useFilmsContext() {
+  return [useFilmsState(), useFilmsDispatch()];
+}
 
 export async function getList(dispatch) {
   const request = await swApi.get("films");
@@ -58,8 +100,6 @@ export async function getList(dispatch) {
       list: results,
     });
   } catch (err) {
-    console.error(err);
-
     return dispatch({
       type: TYPES.ERROR,
     });

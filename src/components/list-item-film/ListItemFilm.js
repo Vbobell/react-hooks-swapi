@@ -1,16 +1,19 @@
 import React from "react";
-import ContentImage from "../content-image/ContentImage";
-import ContentText from "../content-text/ContentText";
 
-const ListItemFilm = (props) => {
+function ListItemFilm(props) {
   const url = props.id === 0 ? "icon-darth-vader" : `icon-film-${props.id}`;
 
   return (
     <li data-testid="item">
-      <ContentImage url={url} />
-      <ContentText {...props} />
+      <figure className="content-image">
+        <i className={url}></i>
+      </figure>
+      <article className="content-text">
+        <h2>{props.name}</h2>
+        <p> {props.description}</p>
+      </article>
     </li>
   );
-};
+}
 
 export default ListItemFilm;
