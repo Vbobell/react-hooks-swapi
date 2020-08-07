@@ -4,8 +4,8 @@ import { withResizeDetector } from 'react-resize-detector';
 import { SpaceBackgroundProvider } from '../../store/space-background';
 
 import Header from '../../components/header';
-import SectionFilms from '../../components/section-films/SectionFilms';
-import SpaceBackground from '../../components/space-background/SpaceBackground';
+import SectionFilms from '../../components/section-films';
+import SpaceBackground from '../../components/space-background';
 
 import '../template.scss';
 
