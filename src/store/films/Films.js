@@ -1,18 +1,18 @@
-import React, { useContext, useReducer, createContext } from "react";
-import swApi from "../../services/api/SwApi";
+import React, { useContext, useReducer, createContext } from 'react';
+import swApi from '../../services/api/SwApi';
 
 export const TYPES = {
-  GET_LIST: "GET_LIST",
-  ERROR: "ERROR",
+  GET_LIST: 'GET_LIST',
+  ERROR: 'ERROR',
 };
 
 export const initialContext = {
-  title: "Films",
+  title: 'Films',
   list: [
     {
       id: 0,
-      name: "Wait..",
-      description: "",
+      name: 'Wait..',
+      description: '',
     },
   ],
 };
@@ -41,9 +41,7 @@ export function FilmsProvider({ children, ...props }) {
 
   return (
     <FilmsStateContext.Provider value={state} {...props}>
-      <FilmsDispatchContext.Provider value={dispatch}>
-        {children}
-      </FilmsDispatchContext.Provider>
+      <FilmsDispatchContext.Provider value={dispatch}>{children}</FilmsDispatchContext.Provider>
     </FilmsStateContext.Provider>
   );
 }
@@ -52,9 +50,7 @@ export function useFilmsState() {
   const context = useContext(FilmsStateContext);
 
   if (!context) {
-    throw new Error(
-      "useFilmsState must be used after an FilmsStateContext.Provider"
-    );
+    throw new Error('useFilmsState must be used after an FilmsStateContext.Provider');
   }
 
   return context;
@@ -64,9 +60,7 @@ export function useFilmsDispatch() {
   const context = useContext(FilmsDispatchContext);
 
   if (!context) {
-    throw new Error(
-      "useFilmsDispatch must be used after and FilmsDispatchContext.Provider"
-    );
+    throw new Error('useFilmsDispatch must be used after and FilmsDispatchContext.Provider');
   }
 
   return context;
@@ -77,14 +71,14 @@ export function useFilmsContext() {
 }
 
 export async function getList(dispatch) {
-  const request = await swApi.get("films");
+  const request = await swApi.get('films');
   const json = await request.data;
 
   let { results } = json;
 
   try {
     if (!results || results.length === 0) {
-      throw new Error("request error");
+      throw new Error('request error');
     }
 
     results = results.map((data) => {
