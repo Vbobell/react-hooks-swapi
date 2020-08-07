@@ -1,10 +1,11 @@
-import React from "react";
-import Logo from "../logo/Logo";
+import React from 'react';
+import Logo from './logo';
 
-function Header() {
+export function Header({ children }) {
   return (
-    <header className="container container-header" data-testid="header">
+    <header className="container container-header">
       <Logo />
+      {children}
     </header>
   );
 }
