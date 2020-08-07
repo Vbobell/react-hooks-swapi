@@ -1,13 +1,13 @@
-import React from "react";
-import { withResizeDetector } from "react-resize-detector";
+import React from 'react';
+import { withResizeDetector } from 'react-resize-detector';
 
-import { SpaceBackgroundProvider } from "../../store/space-background";
+import { SpaceBackgroundProvider } from '../../store/space-background';
 
-import Header from "../../components/header/Header";
-import SectionFilms from "../../components/section-films/SectionFilms";
-import SpaceBackground from "../../components/space-background/SpaceBackground";
+import Header from '../../components/header';
+import SectionFilms from '../../components/section-films/SectionFilms';
+import SpaceBackground from '../../components/space-background/SpaceBackground';
 
-import "../template.scss";
+import '../template.scss';
 
 function FilmsBase({ width, height }) {
   return (

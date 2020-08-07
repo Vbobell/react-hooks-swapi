@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import { useFilmsContext, getList } from "../../store/films";
+import { useFilmsContext, getList } from '../../store/films';
 
-import TitleMain from "../title-main/TitleMain";
-import ListItemFilm from "../list-item-film/ListItemFilm";
+import TitleMain from '../title-main/TitleMain';
+import ListItemFilm from '../list-item-film/ListItemFilm';
 
 function SectionFilms() {
   const [state, dispatch] = useFilmsContext();
@@ -18,10 +18,7 @@ function SectionFilms() {
   }, [dispatch]);
 
   return (
-    <section
-      className="container container-section"
-      data-testid="section-films"
-    >
+    <section className="container container-section" data-testid="section-films">
       <TitleMain>{title}</TitleMain>
       <ul data-testid="list" className="content-list">
         {list.map((item) => (

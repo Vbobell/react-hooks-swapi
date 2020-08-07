@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-function ListItemFilm(props) {
-  const url = props.id === 0 ? "icon-darth-vader" : `icon-film-${props.id}`;
+function ListItemFilm({ id = 0, name = '', description = '' }) {
+  const url = id === 0 ? 'icon-darth-vader' : `icon-film-${id}`;
 
   return (
     <li data-testid="item">
@@ -9,8 +9,8 @@ function ListItemFilm(props) {
         <i className={url}></i>
       </figure>
       <article className="content-text">
-        <h2>{props.name}</h2>
-        <p> {props.description}</p>
+        <h2>{name}</h2>
+        <p> {description}</p>
       </article>
     </li>
   );
