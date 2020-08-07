@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 
 import { useFilmsContext, getList } from '../../store/films';
 
-import TitleMain from '../title-main/TitleMain';
-import ListItemFilm from '../list-item-film/ListItemFilm';
+import TitleMain from '../title-main';
+import ListItemFilm from '../list-item-film';
 
 function SectionFilms() {
   const [state, dispatch] = useFilmsContext();
