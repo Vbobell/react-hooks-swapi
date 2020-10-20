@@ -3,21 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-resize-detector": "^5.0.6",
+    "axios": "^0.20.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-resize-detector": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "plugin:cypress/recommended",
+      "plugin:jest-dom/recommended",
+      "plugin:testing-library/recommended"
+    ]
   },
   "browserslist": {
     "production": [
@@ -32,18 +38,23 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.2",
-    "@testing-library/react": "^10.4.8",
-    "@testing-library/user-event": "^12.1.0",
-    "@types/jest": "^26.0.8",
+    "@testing-library/cypress": "^7.0.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.8",
+    "@types/jest": "^26.0.15",
     "axios-mock-adapter": "^1.18.2",
     "cross-env": "^7.0.2",
-    "husky": "^4.2.5",
-    "jest-canvas-mock": "^2.2.0",
+    "cypress": "^5.4.0",
+    "eslint-plugin-cypress": "^2.11.2",
+    "eslint-plugin-jest-dom": "^3.2.3",
+    "eslint-plugin-testing-library": "^3.9.2",
+    "husky": "^4.3.0",
+    "jest-canvas-mock": "^2.3.0",
     "jest-environment-jsdom-sixteen": "^1.0.3",
-    "lint-staged": "^10.2.11",
+    "lint-staged": "^10.4.2",
     "node-sass": "^4.14.1",
-    "prettier": "^2.0.5"
+    "prettier": "^2.1.2"
   },
   "prettier": {
     "printWidth": 100,
