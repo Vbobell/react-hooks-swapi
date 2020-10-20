@@ -12,6 +12,7 @@ project created to test react hooks and consume api [swapi](https://swapi.co/).
 - react hooks
 - axios
 - jest
+- cypress
 - SASS
 
 ## Instalation
