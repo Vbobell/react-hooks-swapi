@@ -1,16 +1,17 @@
 # react-hooks-swapi
 
-project created to test react hooks and consume api [swapi](https://swapi.co/), this project use component [react-space-background](https://github.com/Vbobell/react-space-background) to render space background.
+project created to test react hooks and consume graphql api [swapi-graphql](https://github.com/Vbobell/swapi-graphql), this project use component [react-space-background](https://github.com/Vbobell/react-space-background) to render space background.
 
 ## dependencies required
 
 - [node](https://nodejs.org/en/)
+- [swapi-graphql](https://github.com/Vbobell/swapi-graphql) - Download and run this project.
 
 ## tools the project
 
 - create react app
 - react hooks
-- axios
+- graphql
 - jest
 - cypress
 - SASS

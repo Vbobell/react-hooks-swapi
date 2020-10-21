@@ -1,9 +1,5 @@
-import axios from 'axios';
+import { createClient } from 'urql';
 
-const BASE_URL = 'https://swapi.dev/api/';
-
-const swapi = axios.create({
-  baseURL: BASE_URL,
+export const client = createClient({
+  url: 'http://localhost:8000/graphql',
 });
-
-export default swapi;

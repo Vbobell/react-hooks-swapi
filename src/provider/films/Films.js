@@ -1,5 +1,4 @@
 import React, { useContext, useReducer, createContext } from 'react';
-import swApi from '../../services/api/SwApi';
 
 export const TYPES = {
   GET_LIST: 'GET_LIST',
@@ -68,36 +67,6 @@ export function useFilmsDispatch() {
 
 export function useFilmsContext() {
   return [useFilmsState(), useFilmsDispatch()];
-}
-
-export async function getList(dispatch) {
-  const request = await swApi.get('films');
-  const json = await request.data;
-
-  let { results } = json;
-
-  try {
-    if (!results || results.length === 0) {
-      throw new Error('request error');
-    }
-
-    results = results.map((data) => {
-      return {
-        id: data.episode_id,
-        name: data.title,
-        description: data.opening_crawl,
-      };
-    });
-
-    return dispatch({
-      type: TYPES.GET_LIST,
-      list: results,
-    });
-  } catch (err) {
-    return dispatch({
-      type: TYPES.ERROR,
-    });
-  }
 }
 
 export default filmsReducer;
