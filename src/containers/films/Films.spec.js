@@ -1,9 +1,10 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import 'jest-canvas-mock';
+import { Provider as GraphqlProvider } from 'urql';
+import { fromValue } from 'wonka';
 
 import { render } from '../../test/utils/render';
-import { axiosMock } from '../../test/utils/axios';
 
 import { FilmsProvider } from '../../provider/films';
 
@@ -11,14 +12,22 @@ import Films from './';
 
 describe('Films container', () => {
   test('Check render Films', async () => {
-    axiosMock.onGet('https://swapi.dev/api/films').replyOnce(200, {
-      results: [{ episode_id: 1, title: 'Mock Title', opening_crawl: 'Mock Description' }],
-    });
+    const mockClient = {
+      executeQuery: jest.fn(() => {
+        return fromValue({
+          data: {
+            films: [{ episode_id: 1, title: 'Mock Title', opening_crawl: 'Mock Description' }],
+          },
+        });
+      }),
+    };
 
     render(
-      <FilmsProvider>
-        <Films />
-      </FilmsProvider>
+      <GraphqlProvider value={mockClient}>
+        <FilmsProvider>
+          <Films />
+        </FilmsProvider>
+      </GraphqlProvider>
     );
 
     const headerLogo = await screen.findByAltText(/logo/i);
