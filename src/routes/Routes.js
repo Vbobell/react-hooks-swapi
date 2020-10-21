@@ -1,7 +1,7 @@
-import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { FilmsProvider } from "../store/films";
-import Films from "../containers/films/Films";
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { FilmsProvider } from '../provider/films';
+import Films from '../containers/films/Films';
 
 function Routes() {
   return (

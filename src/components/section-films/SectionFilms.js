@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { useFilmsContext, getList } from '../../store/films';
+import { useFilmsContext, getList } from '../../provider/films';
 
 import TitleMain from '../title-main';
 import ListItemFilm from '../list-item-film';

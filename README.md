@@ -1,6 +1,6 @@
 # react-hooks-swapi
 
-project created to test react hooks and consume api [swapi](https://swapi.co/).
+project created to test react hooks and consume api [swapi](https://swapi.co/), this project use component [react-space-background](https://github.com/Vbobell/react-space-background) to render space background.
 
 ## dependencies required
 
@@ -14,6 +14,7 @@ project created to test react hooks and consume api [swapi](https://swapi.co/).
 - jest
 - cypress
 - SASS
+- [react-space-background](https://github.com/Vbobell/react-space-background)
 
 ## Instalation
 
