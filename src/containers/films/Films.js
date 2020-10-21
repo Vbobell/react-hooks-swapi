@@ -1,11 +1,9 @@
 import React from 'react';
 import { withResizeDetector } from 'react-resize-detector';
-
-import { SpaceBackgroundProvider } from '../../store/space-background';
+import { SpaceBackgroundProvider, SpaceBackground } from 'react-space-background';
 
 import Header from '../../components/header';
 import SectionFilms from '../../components/section-films';
-import SpaceBackground from '../../components/space-background';
 
 import '../template.scss';
 
@@ -15,7 +13,7 @@ function FilmsBase({ width, height }) {
       <Header />
       <SectionFilms />
       <SpaceBackgroundProvider>
-        <SpaceBackground width={width} height={height} />
+        <SpaceBackground id="space-background" width={width} height={height} />
       </SpaceBackgroundProvider>
     </div>
   );

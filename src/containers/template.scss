@@ -1,5 +1,5 @@
-@import "./variables.scss";
-@import "./font.scss";
+@import './variables.scss';
+@import './font.scss';
 
 .main {
   display: flex;
@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   background-color: $bg-space;
-  font-family: "STARWARS";
+  font-family: 'STARWARS';
 }
 
 .container {
@@ -134,4 +134,12 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+}
+
+#space-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: $bg-primary;
+  z-index: 1;
 }
