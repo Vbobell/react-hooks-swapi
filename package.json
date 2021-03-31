@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@vbobel/react-space-background": "^2.0.0",
     "graphql": "^15.4.0",
     "graphql-tag": "^2.11.0",
     "react": "^17.0.1",
@@ -10,7 +11,6 @@
     "react-resize-detector": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
-    "react-space-background": "^1.2.0-0",
     "urql": "^1.11.4"
   },
   "scripts": {
@@ -55,7 +55,7 @@
     "jest-canvas-mock": "^2.3.0",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "lint-staged": "^10.5.3",
-    "node-sass": "^5.0.0",
+    "node-sass": "^4.14.1",
     "prettier": "^2.2.1",
     "wonka": "^4.0.15"
   },
