@@ -2,6 +2,8 @@
 
 project created to test react hooks and consume graphql api [swapi-graphql](https://github.com/Vbobell/swapi-graphql), this project use component [react-space-background](https://github.com/Vbobell/react-space-background) to render space background.
 
+[visit](https://react-hooks-swapi.vercel.app/)
+
 ## dependencies required
 
 - [node](https://nodejs.org/en/)
