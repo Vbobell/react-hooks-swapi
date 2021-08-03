@@ -10,7 +10,7 @@ import { FilmsProvider } from '../../provider/films';
 
 import Films from './';
 
-describe('Films container', () => {
+describe.skip('Films container', () => {
   test('Check render Films', async () => {
     const mockClient = {
       executeQuery: jest.fn(() => {
