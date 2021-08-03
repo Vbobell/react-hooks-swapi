@@ -55,7 +55,7 @@
     "jest-canvas-mock": "^2.3.0",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "lint-staged": "^10.5.3",
-    "node-sass": "^5.0.0",
+    "node-sass": "^4.14.1",
     "prettier": "^2.2.1",
     "wonka": "^4.0.15"
   },

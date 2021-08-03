@@ -1,5 +1,5 @@
 import { createClient } from 'urql';
 
 export const client = createClient({
-  url: 'http://localhost:8000/graphql',
+  url: 'https://vbobel-swapi-graphql.herokuapp.com/graphql',
 });
